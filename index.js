@@ -6,6 +6,8 @@ const path = require('path');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose')
 
+const Case = require('./models/case')
+
 //connecting to mongo
 mongoose.connect('mongodb://localhost:27017/kkk');
 
@@ -26,8 +28,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/application', (req, res) => {
-    res.render("application");
+    res.render('case/create');
 });
+
+app.post('/application', (req, res, next) => {
+    console.log('post done')
+    res.redirect('/')
+})
+
 
 app.listen(port, () => {
     console.log(`server listening on port ${port}`);

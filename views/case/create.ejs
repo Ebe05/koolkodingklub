@@ -1,0 +1,19 @@
+<% layout('./boilerplate') %>
+
+    <h1 class="text-center">Application Form</h1>
+    <form action="/application" method="POST" class="container">
+        <label for="category" class="form-label">Category</label>
+        <select name="category" id="category" class="form-select">
+            <option value="criminal">Criminal</option>
+            <option value="probate">Probate</option>
+            <option value="divorce">Divorce</option>
+            <option value="accident">Accident/Injury</option>
+            <option value="mental capacity">Mental Capacity</option>
+            <option value="others">Others</option>
+        </select>
+
+        <label for="description" class="form-label">Case description</label>
+        <textarea name="description" id="description" cols="50" rows="10" class="form-control">
+
+        </textarea>
+    </form>
