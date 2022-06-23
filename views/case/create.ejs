@@ -2,6 +2,9 @@
 
     <h1 class="text-center">Application Form</h1>
     <form action="/application" method="POST" class="container">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" id="title">
+
         <label for="category" class="form-label">Category</label>
         <select name="category" id="category" class="form-select">
             <option value="criminal">Criminal</option>
@@ -16,4 +19,6 @@
         <textarea name="description" id="description" cols="50" rows="10" class="form-control">
 
         </textarea>
+
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>
