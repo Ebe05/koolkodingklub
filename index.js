@@ -52,83 +52,20 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//routes
-
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next()
-})
+});
+
+//routes
+const userRoutes = require('./routes/user');
+const applicationRoutes = require('./routes/application');
+
+app.use('/', userRoutes);
+app.use('/application', applicationRoutes);
 
 app.get('/', (req, res) => {
-    res.render("home");
-});
-
-//handling application form request
-app.get('/application', isLoggedIn, (req, res) => {
-    res.render('case/create');
-});
-
-app.post('/application', isLoggedIn, catchAsync(async (req, res, next) => {
-    const { title, category, description } = req.body;
-    const application = await Case.create({ title, category, description });
-    res.redirect('/');
-})
-);
-
-app.get('/application/history', isLoggedIn, catchAsync(async (req, res, next) => {
-    const applications = await Case.find({});
-    res.render('case/history', { applications });
-}));
-
-app.get('/application/:id', catchAsync(async (req, res, next) => {
-    const { id } = req.params;
-    const application = await Case.findById(id);
-    res.render('case/read', { application });
-}));
-
-//registration
-app.get('/register', (req, res) => {
-    res.render('user/register');
-});
-
-app.post('/register', catchAsync(async (req, res, next) => {
-    try {
-        const { email, username, password } = req.body;
-        const user = new User({ email, username });
-        const registeredUser = await User.register(user, password);
-        req.login(registeredUser, (err) => {
-            if (err) {
-                next(err)
-            }
-            else {
-                res.redirect('/')
-            }
-        });
-    }
-    catch (e) {
-        res.redirect('/register')
-    }
-}));
-
-//login
-app.get('/login', (req, res) => {
-    res.render('user/login');
-});
-
-app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login', keepSessionInfo: true }), (req, res) => {
-    res.redirect(req.session.returnTo);
-});
-
-//logout
-app.get('/logout', (req, res, next) => {
-    req.logout((err) => {
-        if (err) {
-            next(err)
-        }
-        else {
-            res.redirect('/');
-        }
-    })
+    res.render('home');
 });
 
 app.listen(port, () => {
