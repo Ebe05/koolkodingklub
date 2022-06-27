@@ -8,6 +8,11 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+
+    type: {
+        type: String,
+        enum: ['lawyer', 'applicant']
     }
 });
 

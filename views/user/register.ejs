@@ -1,5 +1,10 @@
 <% layout('./boilerplate') %>
     <form action="/register" method="post">
+        <label for="type">Register as</label>
+        <select name="type" id="type" class="form-select">
+            <option value="lawyer">Lawyer</option>
+            <option value="applicant">Applicant</option>
+        </select>
         <label for="email" class="form-label">Email</label>
         <input type="email" class="form-control" name="email" id="email">
         <label for="username" class="form-label">Username</label>

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Case = require('../models/case');
 const isLoggedIn = require('../utilities/isLoggedIn');
 const controller = require('../controllers/application');
 

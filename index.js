@@ -23,6 +23,9 @@ app.set('view engine', 'ejs');
 app.engine('ejs', engine);
 app.set('views', path.join(__dirname, '/views'));
 
+//serving static files
+app.use(express.static('public'))
+
 //setting up method-override
 app.use(methodOverride('_method'));
 

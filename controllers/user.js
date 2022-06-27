@@ -7,8 +7,8 @@ module.exports.registerForm = (req, res) => {
 
 module.exports.register = catchAsync(async (req, res, next) => {
     try {
-        const { email, username, password } = req.body;
-        const user = new User({ email, username });
+        const { email, username, password, type } = req.body;
+        const user = new User({ email, username, type });
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, (err) => {
             if (err) {
@@ -29,7 +29,12 @@ module.exports.loginForm = (req, res) => {
 };
 
 module.exports.login = (req, res) => {
-    res.redirect(req.session.returnTo);
+    if (req.session.returnTo) {
+        res.redirect(req.session.returnTo);
+    }
+    else {
+        res.redirect('/');
+    }
 };
 
 module.exports.logout = (req, res, next) => {
