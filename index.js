@@ -63,9 +63,11 @@ app.use((req, res, next) => {
 //routes
 const userRoutes = require('./routes/user');
 const applicationRoutes = require('./routes/application');
+const appointmentRoutes = require('./routes/appointment')
 
 app.use('/', userRoutes);
 app.use('/application', applicationRoutes);
+app.use('/appointment', appointmentRoutes)
 
 app.get('/', (req, res) => {
     res.render('home');
