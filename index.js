@@ -37,7 +37,7 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 
 const secret = process.env.SECRET
-
+process.env.sessionSECRET
 //mongo session
 const store = MongoStore.create({
     mongoUrl: dbUrl,
@@ -49,7 +49,7 @@ const store = MongoStore.create({
 //configuring session
 const sessionConfig = {
     store,
-    secret: "thisisasecret",
+    secret: process.env.sessionSECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
