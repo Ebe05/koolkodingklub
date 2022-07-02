@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 8080;
+require('dotenv').config()
 const engine = require('ejs-mate');
 const path = require('path');
 const methodOverride = require('method-override');
@@ -13,10 +14,12 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user');
 const isLoggedIn = require('./utilities/isLoggedIn');
+const MongoStore = require('connect-mongo')
 const dbUrl = process.env.DB_URL
 
 //connecting to mongo
-mongoose.connect('mongodb://localhost:27017/kkk');
+// mongoose.connect('mongodb://localhost:27017/kkk');
+mongoose.connect(dbUrl);
 
 //setting up view engine
 app.set('view engine', 'ejs');
@@ -32,9 +35,20 @@ app.use(methodOverride('_method'));
 //parsing form data
 app.use(express.urlencoded({ extended: true }));
 
+const secret = process.env.SECRET
+
+//mongo session
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    secret,
+    touchAfter: 24 * 60 * 60
+})
+
+
 //configuring session
 const sessionConfig = {
-    secret: 'thisshouldbeabettersecret!',
+    store,
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
