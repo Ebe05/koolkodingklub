@@ -1,16 +1,20 @@
 <% layout('./boilerplate') %>
+    <div class="container text-center">
+        <h1 class="mt-3">
+            <%= application.title %>
+        </h1>
 
-    <h1>
-        <%= application.title %>
-    </h1>
+        <h2>
+            <%= application.category %>
+        </h2>
 
-    <h2>
-        <%= application.category %>
-    </h2>
-
-    <h3>
-        <%= application.description %>
-    </h3>
-    <h4>
-        <%= application.date %>
-    </h4>
+        <h3 class="mt-5">
+            <%= application.description %>
+        </h3>
+        <h4>
+            <%= application.date %>
+        </h4>
+        <h4>
+            <%= application.time %>
+        </h4>
+    </div>

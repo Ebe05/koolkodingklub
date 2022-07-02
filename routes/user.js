@@ -9,7 +9,7 @@ router.route('/register')
 
 router.route('/login')
     .get(controller.loginForm)
-    .post(passport.authenticate('local', { failureFlash: true, failureRedirect: '/login', keepSessionInfo: true }),
+    .post(passport.authenticate('local', { failureRedirect: '/login', keepSessionInfo: true }),
         controller.login);
 
 router.get('/logout', controller.logout);

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const isLoggedIn = require('../utilities/isLoggedIn');
 const controller = require('../controllers/application');
-const validate = require('../utilities/validMidware')
+const validate = require('../utilities/validMidware');
 
 router.route('/')
     .get(isLoggedIn, controller.createForm)

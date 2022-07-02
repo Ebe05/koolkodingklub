@@ -24,5 +24,8 @@
         <input type="date" class="form-control" name="date" id="date" min=<%=currentDate %> max=<%= oneMonth %> value=
             <%= currentDate %> required>
 
+                <label for="time" class="form-label">Time</label>
+                <input type="time" class="form-control" name="time" id="time" min="09:00" max="17:00" step="3600">
+
                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>

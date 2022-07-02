@@ -4,7 +4,8 @@ const caseSchema = Joi.object({
     category: Joi.string(),
     description: Joi.string(),
     date: Joi.string()
-        .isoDate()
+        .isoDate(),
+    time: Joi.string()
 })
 
 module.exports = caseSchema

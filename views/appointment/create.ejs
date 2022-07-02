@@ -1,10 +1,13 @@
 <% layout('./boilerplate') %>
 
-    <h1>Select date</h1>
+    <h1 class="text-center">Select date</h1>
 
-    <form action="/appointment" method="POST" class="needs-validation" novalidate>
-        <label for="date" class="form-label">Date</label>
-        <input type="date" class="form-control" name="date" id="date" min=<%=currentDate %> max=<%= oneMonth %> value=
-            <%= currentDate %> required>
-                <button type="submit" class="btn btn-primary mt-3">Book</button>
-    </form>
+    <div class="container">
+        <form action="/appointment" method="POST" class="needs-validation" novalidate>
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" name="date" id="date" min=<%=currentDate %> max=<%= oneMonth %>
+                value=
+                <%= currentDate %> required>
+                    <button type="submit" class="btn btn-primary mt-3">Book</button>
+        </form>
+    </div>

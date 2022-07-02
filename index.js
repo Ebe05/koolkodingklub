@@ -13,7 +13,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user');
 const isLoggedIn = require('./utilities/isLoggedIn');
-
+const dbUrl = process.env.DB_URL
 
 //connecting to mongo
 mongoose.connect('mongodb://localhost:27017/kkk');

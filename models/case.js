@@ -15,6 +15,10 @@ const caseSchema = new Schema({
     user: {
         type: String,
         required: true
+    },
+    time: {
+        type: String,
+        required: true
     }
 })
 

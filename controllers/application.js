@@ -9,9 +9,9 @@ module.exports.createForm = (req, res) => {
 };
 
 module.exports.create = catchAsync(async (req, res, next) => {
-    const { title, category, description, date } = req.body;
+    const { title, category, description, date, time } = req.body;
     const user = req.user.username
-    const application = await Case.create({ title, category, description, date, user });
+    const application = await Case.create({ title, category, description, date, user, time });
     res.redirect('/');
 });
 
@@ -24,5 +24,10 @@ module.exports.history = catchAsync(async (req, res, next) => {
 module.exports.read = catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const application = await Case.findById(id);
-    res.render('case/read', { application });
+    if (application.user == req.user.username || req.user.type == 'lawyer') {
+        res.render('case/read', { application });
+    }
+    else {
+        res.redirect('/')
+    }
 })

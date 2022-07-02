@@ -12,7 +12,7 @@ const userSchema = new Schema({
 
     type: {
         type: String,
-        enum: ['lawyer', 'applicant']
+        enum: ['lawyer', 'applicant', 'admin']
     }
 });
 

@@ -1,11 +1,11 @@
 <% layout('./boilerplate') %>
 
-    <h1>Application History</h1>
+    <h1 class="text-center">Application History</h1>
 
     <% for(application of applications) { %>
 
         <a href="/application/<%= application._id %>">
-            <h1>
+            <h1 class="text-center">
                 <%= application.title %>
             </h1>
         </a>
