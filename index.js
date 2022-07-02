@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 require('dotenv').config()
 const engine = require('ejs-mate');
 const path = require('path');
@@ -15,10 +15,9 @@ const LocalStrategy = require('passport-local')
 const User = require('./models/user');
 const isLoggedIn = require('./utilities/isLoggedIn');
 const MongoStore = require('connect-mongo')
-const dbUrl = process.env.DB_URL
-
 //connecting to mongo
 // mongoose.connect('mongodb://localhost:27017/kkk');
+const dbUrl = process.env.DBURL
 mongoose.connect(dbUrl);
 
 //setting up view engine
@@ -40,7 +39,7 @@ const secret = process.env.SECRET
 //mongo session
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    secret,
+    secret: 'thisisnotasecret',
     touchAfter: 24 * 60 * 60
 })
 
@@ -48,7 +47,7 @@ const store = MongoStore.create({
 //configuring session
 const sessionConfig = {
     store,
-    secret,
+    secret: 'thisisnotasecret',
     resave: false,
     saveUninitialized: true,
     cookie: {
