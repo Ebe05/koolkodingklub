@@ -1,12 +1,12 @@
 <% layout('./boilerplate') %>
 
     <h1 class="text-center">Application Form</h1>
-    <form action="/application" method="POST" class="container">
+    <form action="/application" method="POST" class="needs-validation container" novalidate>
         <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" name="title" id="title">
+        <input type="text" class="form-control" name="title" id="title" required>
 
         <label for="category" class="form-label">Category</label>
-        <select name="category" id="category" class="form-select">
+        <select name="category" id="category" class="form-select" required>
             <option value="criminal">Criminal</option>
             <option value="probate">Probate</option>
             <option value="divorce">Divorce</option>
@@ -16,9 +16,13 @@
         </select>
 
         <label for="description" class="form-label">Case description</label>
-        <textarea name="description" id="description" cols="50" rows="10" class="form-control">
+        <textarea name="description" id="description" cols="50" rows="10" class="form-control" required>
 
         </textarea>
 
-        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" name="date" id="date" min=<%=currentDate %> max=<%= oneMonth %> value=
+            <%= currentDate %> required>
+
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
     </form>

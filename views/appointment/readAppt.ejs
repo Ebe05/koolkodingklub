@@ -1,0 +1,9 @@
+<% layout('./boilerplate') %>
+
+    <% for(application of cases) {%>
+        <a href="/application/<%= application._id %>">
+            <h2>
+                <%= application.title %>
+            </h2>
+        </a>
+        <% } %>

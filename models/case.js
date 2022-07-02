@@ -7,7 +7,15 @@ const caseSchema = new Schema({
         type: String,
         enum: ['criminal', 'probate', 'divorce', 'mental capacity', 'accident', 'others'],
     },
-    description: String
+    description: String,
+    date: {
+        type: String,
+        required: true
+    },
+    user: {
+        type: String,
+        required: true
+    }
 })
 
 const Case = mongoose.model('Case', caseSchema)

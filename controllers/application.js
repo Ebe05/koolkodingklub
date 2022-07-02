@@ -1,19 +1,23 @@
 const catchAsync = require('../utilities/catchAsync');
 const Case = require('../models/case');
 
-
 module.exports.createForm = (req, res) => {
-    res.render('case/create');
+    let today = new Date()
+    let currentDate = new Date().toISOString().slice(0, 10);
+    let oneMonth = new Date(today.setMonth(today.getMonth() + 1)).toISOString().slice(0, 10);
+    res.render('case/create', { currentDate, oneMonth });
 };
 
 module.exports.create = catchAsync(async (req, res, next) => {
-    const { title, category, description } = req.body;
-    const application = await Case.create({ title, category, description });
+    const { title, category, description, date } = req.body;
+    const user = req.user.username
+    const application = await Case.create({ title, category, description, date, user });
     res.redirect('/');
 });
 
 module.exports.history = catchAsync(async (req, res, next) => {
-    const applications = await Case.find({});
+    const user = req.user.username
+    const applications = await Case.find({ user });
     res.render('case/history', { applications });
 });
 

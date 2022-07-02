@@ -9,7 +9,7 @@ const appointmentSchema = new Schema({
     date: {
         type: String,
         required: true
-    }
+    },
 })
 
 const Appointment = mongoose.model('Appointment', appointmentSchema)

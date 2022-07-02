@@ -1,0 +1,10 @@
+<% layout('./boilerplate') %>
+    <h1>Appoinments</h1>
+
+    <% for(appointment of appointments) { %>
+        <a href="/appointment/<%= appointment._id %>">
+            <h2>
+                <%= appointment.date %>
+            </h2>
+        </a>
+        <% } %>
