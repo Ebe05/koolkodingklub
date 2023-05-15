@@ -17,16 +17,24 @@ Admin Dashboard: An admin panel is provided for administrators to manage lawyers
 Technologies Used
 
 Backend: Node.js, Express, MongoDB
+
 Frontend: HTML, CSS, JavaScript, Bootstrap
+
 Database: MongoDB
+
 Authentication: Passport
 
 
 Installation
+
 Clone the repository: git clone [repository-url]
+
 Install dependencies: npm install
+
 Configure the database connection and authentication settings in the respective configuration files.
+
 Start the server: npm start
+
 Access the website in your browser at http://localhost:3000 (or the specified port).
 
 
